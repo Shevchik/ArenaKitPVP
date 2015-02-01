@@ -26,6 +26,7 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
+import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -116,6 +117,14 @@ public class ArenaKitPVP extends JavaPlugin implements Listener {
 
 	@EventHandler
 	public void onCommand(BlockBreakEvent event) {
+		Player player = event.getPlayer();
+		if (arena.getPlayerHandler().getManager().isInArena(player.getName())) {
+			event.setCancelled(true);
+		}
+	}
+
+	@EventHandler
+	public void onCommand(PlayerDropItemEvent event) {
 		Player player = event.getPlayer();
 		if (arena.getPlayerHandler().getManager().isInArena(player.getName())) {
 			event.setCancelled(true);
