@@ -28,6 +28,7 @@ import java.util.HashSet;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
@@ -124,50 +125,66 @@ public class Kits {
 	}
 
 	private void loadDefaultKits() {
-		kits.put("archer", new Kit(
-			new ItemStack[4],
+		kits.put("knight", new Kit(
 			new ItemStack[] {
-				new ItemStack(Material.BOW),
-				new ItemStack(Material.ARROW, 64),
+				ItemStackBuilder.builder().setType(Material.GOLD_HELMET).build(),
+				ItemStackBuilder.builder().setType(Material.GOLD_CHESTPLATE).build(),
+				ItemStackBuilder.builder().setType(Material.GOLD_LEGGINGS).build(),
+				ItemStackBuilder.builder().setType(Material.GOLD_BOOTS).build()
+			},
+			new ItemStack[] {
+				ItemStackBuilder.builder().setType(Material.IRON_SWORD).build()
+			},
+			new ArrayList<PotionEffect>()
+		));
+		kits.put("archer", new Kit(
+			new ItemStack[] {
+				ItemStackBuilder.builder().setType(Material.LEATHER_HELMET).build(),
+				ItemStackBuilder.builder().setType(Material.LEATHER_CHESTPLATE).build(),
+				ItemStackBuilder.builder().setType(Material.LEATHER_LEGGINGS).build(),
+				ItemStackBuilder.builder().setType(Material.LEATHER_BOOTS).build()
+			},
+			new ItemStack[] {
+				ItemStackBuilder.builder().setType(Material.BOW).addEnchantment(Enchantment.ARROW_KNOCKBACK, 1).build(),
+				ItemStackBuilder.builder().setType(Material.GOLD_SWORD).build(),
+				ItemStackBuilder.builder().setType(Material.ARROW).setAmount(64).build()
 			},
 			new ArrayList<PotionEffect>(Arrays.asList(
 				new PotionEffect(PotionEffectType.WEAKNESS, Integer.MAX_VALUE, 1)
 			))
 		));
-		kits.put("knight", new Kit(
+		kits.put("pyro", new Kit(
 			new ItemStack[] {
-				new ItemStack(Material.CHAINMAIL_HELMET),
-				new ItemStack(Material.CHAINMAIL_CHESTPLATE),
-				new ItemStack(Material.CHAINMAIL_LEGGINGS),
-				new ItemStack(Material.CHAINMAIL_BOOTS)
+				ItemStackBuilder.builder().setType(Material.GOLD_HELMET).build(),
+				ItemStackBuilder.builder().setType(Material.GOLD_CHESTPLATE).build(),
+				ItemStackBuilder.builder().setType(Material.GOLD_LEGGINGS).build(),
+				ItemStackBuilder.builder().setType(Material.GOLD_BOOTS).build()
 			},
 			new ItemStack[] {
-				new ItemStack(Material.WOOD_SWORD)
+				ItemStackBuilder.builder().setType(Material.IRON_SWORD).addEnchantment(Enchantment.DAMAGE_ALL, 1).addEnchantment(Enchantment.FIRE_ASPECT, 1).build()
 			},
-			new ArrayList<PotionEffect>()
+			new ArrayList<PotionEffect>(Arrays.asList(
+				new PotionEffect(PotionEffectType.FIRE_RESISTANCE, Integer.MAX_VALUE, 0)
+			))
 		));
-		kits.put("link", new Kit(
+		kits.put("ghost", new Kit(
 			new ItemStack[4],
+			new ItemStack[] {
+				ItemStackBuilder.builder().setType(Material.DIAMOND_SWORD).build()
+			},
+			new ArrayList<PotionEffect>(Arrays.asList(
+				new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 1)
+			))
+		));
+		kits.put("cactus", new Kit(
+			new ItemStack[] {
+				ItemStackBuilder.builder().setType(Material.LEATHER_HELMET).addEnchantment(Enchantment.THORNS, 15).addEnchantment(Enchantment.DURABILITY, 10).build(),
+				ItemStackBuilder.builder().setType(Material.LEATHER_CHESTPLATE).addEnchantment(Enchantment.THORNS, 15).addEnchantment(Enchantment.DURABILITY, 10).build(),
+				ItemStackBuilder.builder().setType(Material.LEATHER_LEGGINGS).addEnchantment(Enchantment.THORNS, 15).addEnchantment(Enchantment.DURABILITY, 10).build(),
+				ItemStackBuilder.builder().setType(Material.LEATHER_BOOTS).addEnchantment(Enchantment.THORNS, 15).addEnchantment(Enchantment.DURABILITY, 10).build()
+			},
 			new ItemStack[] {
 				new ItemStack(Material.STONE_SWORD)
-			},
-			new ArrayList<PotionEffect>(Arrays.asList(
-				new PotionEffect(PotionEffectType.REGENERATION, Integer.MAX_VALUE, 0)
-			))
-		));
-		kits.put("luna", new Kit(
-			new ItemStack[4],
-			new ItemStack[] {
-				new ItemStack(Material.WOOD_SWORD)
-			},
-			new ArrayList<PotionEffect>(Arrays.asList(
-				new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, Integer.MAX_VALUE, 1)
-			))
-		));
-		kits.put("police", new Kit(
-			new ItemStack[4],
-			new ItemStack[] {
-				new ItemStack(Material.WOOD_SWORD)
 			},
 			new ArrayList<PotionEffect>(Arrays.asList(
 				new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 1)
@@ -175,10 +192,10 @@ public class Kits {
 		));
 		kits.put("tank", new Kit(
 			new ItemStack[] {
-				new ItemStack(Material.IRON_HELMET),
-				new ItemStack(Material.IRON_CHESTPLATE),
-				new ItemStack(Material.IRON_LEGGINGS),
-				new ItemStack(Material.IRON_BOOTS),
+				ItemStackBuilder.builder().setType(Material.DIAMOND_HELMET).addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 2).addEnchantment(Enchantment.DURABILITY, 10).build(),
+				ItemStackBuilder.builder().setType(Material.DIAMOND_CHESTPLATE).addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 2).addEnchantment(Enchantment.DURABILITY, 10).build(),
+				ItemStackBuilder.builder().setType(Material.DIAMOND_LEGGINGS).addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 2).addEnchantment(Enchantment.DURABILITY, 10).build(),
+				ItemStackBuilder.builder().setType(Material.DIAMOND_BOOTS).addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 2).addEnchantment(Enchantment.DURABILITY, 10).build(),
 			},
 			new ItemStack[] {
 				new ItemStack(Material.WOOD_SWORD)
@@ -188,11 +205,18 @@ public class Kits {
 			))
 		));
 		kits.put("berserk", new Kit(
-			new ItemStack[4],
 			new ItemStack[] {
-				new ItemStack(Material.DIAMOND_SWORD)
+				ItemStackBuilder.builder().setType(Material.LEATHER_HELMET).build(),
+				ItemStackBuilder.builder().setType(Material.LEATHER_CHESTPLATE).build(),
+				ItemStackBuilder.builder().setType(Material.LEATHER_LEGGINGS).build(),
+				ItemStackBuilder.builder().setType(Material.LEATHER_BOOTS).build()
 			},
-			new ArrayList<PotionEffect>()
+			new ItemStack[] {
+				ItemStackBuilder.builder().setType(Material.DIAMOND_SWORD).addEnchantment(Enchantment.KNOCKBACK, 2).addEnchantment(Enchantment.DAMAGE_ALL, 5).build()
+			},
+			new ArrayList<PotionEffect>(Arrays.asList(
+				new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 1)
+			))
 		));
 	}
 
