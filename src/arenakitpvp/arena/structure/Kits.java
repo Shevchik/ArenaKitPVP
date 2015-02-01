@@ -88,6 +88,9 @@ public class Kits {
 		public void giveKit(Player player) {
 			player.getInventory().setArmorContents(armor);
 			player.getInventory().setContents(items);
+			for (PotionEffect effect : player.getActivePotionEffects()) {
+				player.removePotionEffect(effect.getType());
+			}
 			player.addPotionEffects(effects);
 		}
 
