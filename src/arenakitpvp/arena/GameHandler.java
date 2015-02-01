@@ -89,7 +89,7 @@ public class GameHandler {
 			Kit kit = arena.getStructureManager().getKits().getKit(line2);
 			arena.getGameHandler().setKit(player, kit);
 			kit.giveKit(player);
-			Messages.sendMessage(player, Messages.kitgiven.replace("{KITNAME}", sign.getLine(0)));
+			Messages.sendMessage(player, Messages.kitgiven.replace("{KITNAME}", line2));
 		}
 	}
 
