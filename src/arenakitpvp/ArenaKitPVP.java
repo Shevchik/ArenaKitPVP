@@ -27,6 +27,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import arenakitpvp.arena.Arena;
@@ -83,6 +84,14 @@ public class ArenaKitPVP extends JavaPlugin implements Listener {
 			if (arena.getPlayerHandler().getManager().isInArena(player.getName())) {
 				arena.getGameHandler().handleDamage(event);
 			}
+		}
+	}
+
+	@EventHandler
+	public void onLeave(PlayerQuitEvent event) {
+		Player player = event.getPlayer();
+		if (arena.getPlayerHandler().getManager().isInArena(player.getName())) {
+			arena.getPlayerHandler().leavePlayer(player, Messages.playerlefttoplayer, Messages.playerlefttoothers);
 		}
 	}
 
