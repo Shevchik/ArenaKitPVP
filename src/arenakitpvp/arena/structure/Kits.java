@@ -92,6 +92,7 @@ public class Kits {
 				player.removePotionEffect(effect.getType());
 			}
 			player.addPotionEffects(effects);
+			player.updateInventory();
 		}
 
 		@SuppressWarnings("unchecked")
