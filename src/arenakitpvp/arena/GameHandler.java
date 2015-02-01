@@ -20,9 +20,11 @@ package arenakitpvp.arena;
 import java.util.HashMap;
 
 import org.bukkit.Bukkit;
+import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 
 import arenakitpvp.arena.structure.Kits.Kit;
@@ -74,6 +76,20 @@ public class GameHandler {
 		Player entity = (Player) event.getEntity();
 		if (arena.getStructureManager().isInSafeZoneBounds(entity.getLocation())) {
 			event.setCancelled(true);
+		}
+	}
+
+	public void handleClick(PlayerInteractEvent event) {
+		Player player = event.getPlayer();
+		Sign sign = (Sign) event.getClickedBlock().getState();
+		String line2 = sign.getLine(1);
+		if (line2.equals("leave")) {
+			arena.getPlayerHandler().leavePlayer(player, Messages.playerlefttoplayer, Messages.playerlefttoothers);
+		} else if (arena.getStructureManager().getKits().isKitExist(line2)) {
+			Kit kit = arena.getStructureManager().getKits().getKit(line2);
+			arena.getGameHandler().setKit(player, kit);
+			kit.giveKit(player);
+			Messages.sendMessage(player, Messages.kitgiven.replace("{KITNAME}", sign.getLine(0)));
 		}
 	}
 
