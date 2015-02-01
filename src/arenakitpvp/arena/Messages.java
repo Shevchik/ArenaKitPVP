@@ -41,6 +41,7 @@ public class Messages {
 
 	public static String kitgiven = "&6You chose kit {KITNAME}";
 	public static String kitdoesnotexist = "&4Kit {KITNAME} doesn't exist";
+	public static String kitshouldbeinsafezone = "&4You should be in a safezone to choose kit";
 
 	public static void sendMessage(Player player, String message) {
 		if (!message.equals("")) {
@@ -66,6 +67,7 @@ public class Messages {
 		playerlefttoothers = config.getString("playerlefttoothers", playerlefttoothers);
 		kitgiven = config.getString("kitgiven", kitgiven);
 		kitdoesnotexist = config.getString("kitdoesnotexist", kitdoesnotexist);
+		kitshouldbeinsafezone = config.getString("kitshouldbeinsafezone", kitshouldbeinsafezone);
 		saveMessages(messageconfig);
 	}
 
@@ -80,6 +82,7 @@ public class Messages {
 		config.set("playerlefttoothers", playerlefttoothers);
 		config.set("kitgiven", kitgiven);
 		config.set("kitdoesnotexist", kitdoesnotexist);
+		config.set("kitshouldbeinsafezone", kitshouldbeinsafezone);
 		try {
 			config.save(messageconfig);
 		} catch (IOException e) {

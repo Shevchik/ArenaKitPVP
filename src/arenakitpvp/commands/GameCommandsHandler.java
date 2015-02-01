@@ -76,11 +76,15 @@ public class GameCommandsHandler implements CommandExecutor {
 			Arena arena = plugin.getArena();
 			if (arena.getPlayerHandler().getManager().isInArena(player.getName())) {
 				if (arena.getStructureManager().getKits().isKitExist(args[1])) {
-					Kit kit = arena.getStructureManager().getKits().getKit(args[1]);
-					arena.getGameHandler().setKit(player, kit);
-					kit.giveKit(player);
-					Messages.sendMessage(player, Messages.kitgiven.replace("{KITNAME}", args[1]));
-					return true;
+					if (arena.getStructureManager().isInSafeZoneBounds(player.getLocation())) {
+						Kit kit = arena.getStructureManager().getKits().getKit(args[1]);
+						arena.getGameHandler().setKit(player, kit);
+						kit.giveKit(player);
+						Messages.sendMessage(player, Messages.kitgiven.replace("{KITNAME}", args[1]));
+						return true;
+					} else {
+						return true;
+					}
 				} else {
 					Messages.sendMessage(player, Messages.kitdoesnotexist.replace("{KITNAME}", args[1]));
 					return true;
