@@ -1,7 +1,7 @@
 name: ArenaKitPVP
 main: arenakitpvp.ArenaKitPVP
 softdepend: [WorldEdit]
-version: 3.0
+version: 1.0
 author: _Shevchik_
 commands:
   kitpvpsetup:
