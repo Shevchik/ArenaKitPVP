@@ -36,6 +36,8 @@ public class StructureManager {
 	private Vector arenaMax;
 
 	private Vector spawnpoint;
+	private float spawnpointyaw;
+	private float spawnpointpitch;
 
 	private Vector safeZoneMin;
 	private Vector safeZoneMax;
@@ -49,7 +51,7 @@ public class StructureManager {
 	}
 
 	public Location getSpawnLocation() {
-		return new Location(getWorld(), spawnpoint.getX(), spawnpoint.getY(), spawnpoint.getZ());
+		return new Location(getWorld(), spawnpoint.getX(), spawnpoint.getY(), spawnpoint.getZ(), spawnpointyaw, spawnpointpitch);
 	}
 
 	public boolean isInSafeZoneBounds(Location location) {
@@ -65,6 +67,8 @@ public class StructureManager {
 	public boolean setSpawnLocation(Location location) {
 		if (isInArenaBounds(location)) {
 			spawnpoint = location.toVector();
+			spawnpointyaw = location.getYaw();
+			spawnpointpitch = location.getPitch();
 			return true;
 		}
 		return false;
@@ -95,6 +99,8 @@ public class StructureManager {
 		arenaMax = config.getVector("arenaMax", null);
 		// load spawnpoint
 		spawnpoint = config.getVector("spawnpoint", null);
+		spawnpointyaw = (float) config.getDouble("spawnpointyaw", spawnpointyaw);
+		spawnpointpitch = (float) config.getDouble("spawnpointpitch", spawnpointpitch);
 		// load safezone
 		safeZoneMin = config.getVector("safeZoneMin", null);
 		safeZoneMax = config.getVector("safeZoneMax", null);
@@ -114,6 +120,8 @@ public class StructureManager {
 		// save spawnpoint
 		try {
 			config.set("spawnpoint", spawnpoint);
+			config.set("spawnpointyaw", spawnpointyaw);
+			config.set("spawnpointpitch", spawnpointpitch);
 		} catch (Exception e) {
 		}
 		// save safezone
