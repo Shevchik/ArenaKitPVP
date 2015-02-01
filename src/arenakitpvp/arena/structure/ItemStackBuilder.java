@@ -32,7 +32,7 @@ public class ItemStackBuilder {
 
 	public ItemStackBuilder addEnchantment(Enchantment ench, int level) {
 		checkModify();
-		itemstack.addEnchantment(ench, level);
+		itemstack.addUnsafeEnchantment(ench, level);
 		return this;
 	}
 
