@@ -1,0 +1,12 @@
+name: ArenaKitPVP
+main: arenakitpvp.ArenaKitPVP
+softdepend: [WorldEdit]
+version: 3.0
+author: _Shevchik_
+commands:
+  kitpvpsetup:
+    description: ArenaKitPVP setup commands
+    usage: Command is invalid
+  kitpvp:
+    description: ArenaKitPVP game commands
+    usage: Use /kitpvp help to show all commands available in plugin
