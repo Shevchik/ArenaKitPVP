@@ -43,6 +43,9 @@ public class Messages {
 	public static String kitdoesnotexist = "&4Kit {KITNAME} doesn't exist";
 	public static String kitshouldbeinsafezone = "&4You should be in a safezone to choose kit";
 
+	public static String killedplayer = "&6You killed {PLAYER}";
+	public static String killedbyplayer = "&6You were killed by {PLAYER}";
+
 	public static void sendMessage(Player player, String message) {
 		if (!message.equals("")) {
 			player.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
@@ -68,6 +71,8 @@ public class Messages {
 		kitgiven = config.getString("kitgiven", kitgiven);
 		kitdoesnotexist = config.getString("kitdoesnotexist", kitdoesnotexist);
 		kitshouldbeinsafezone = config.getString("kitshouldbeinsafezone", kitshouldbeinsafezone);
+		killedplayer = config.getString("killedplayer", killedplayer);
+		killedbyplayer = config.getString("killedbyplayer", killedbyplayer);
 		saveMessages(messageconfig);
 	}
 
@@ -83,6 +88,8 @@ public class Messages {
 		config.set("kitgiven", kitgiven);
 		config.set("kitdoesnotexist", kitdoesnotexist);
 		config.set("kitshouldbeinsafezone", kitshouldbeinsafezone);
+		config.set("killedplayer", killedplayer);
+		config.set("killedbyplayer", killedbyplayer);
 		try {
 			config.save(messageconfig);
 		} catch (IOException e) {

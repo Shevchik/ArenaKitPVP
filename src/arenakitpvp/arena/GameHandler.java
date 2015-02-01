@@ -63,6 +63,11 @@ public class GameHandler {
 				}
 			}
 		});
+		Player killer = event.getEntity().getKiller();
+		if (killer != null) {
+			Messages.sendMessage(player, Messages.killedbyplayer.replace("{PLAYER}", killer.getName()));
+			Messages.sendMessage(killer, Messages.killedplayer.replace("{PLAYER}", player.getName()));
+		}
 	}
 
 	public void handleMove(PlayerMoveEvent event) {
