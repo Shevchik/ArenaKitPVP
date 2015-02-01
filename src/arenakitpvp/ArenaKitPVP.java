@@ -98,7 +98,7 @@ public class ArenaKitPVP extends JavaPlugin implements Listener {
 	@EventHandler
 	public void onCommand(PlayerCommandPreprocessEvent event) {
 		Player player = event.getPlayer();
-		if (event.getMessage().startsWith("/kitpvp kit")) {
+		if (event.getMessage().startsWith("/kitpvp kit") || event.getMessage().startsWith("/kitpvp leave")) {
 			return;
 		}
 		if (arena.getPlayerHandler().getManager().isInArena(player.getName()) && !player.hasPermission("arenakitpvp.cmdblockbypass")) {
