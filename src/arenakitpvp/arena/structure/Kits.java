@@ -122,6 +122,7 @@ public class Kits {
 		} else {
 			loadDefaultKits();
 		}
+		saveToConfig(datafolder);
 	}
 
 	private void loadDefaultKits() {

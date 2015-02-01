@@ -34,6 +34,8 @@ import arenakitpvp.commands.setup.arena.DeleteKit;
 import arenakitpvp.commands.setup.arena.SetArena;
 import arenakitpvp.commands.setup.arena.SetSafeZone;
 import arenakitpvp.commands.setup.arena.SetSpawn;
+import arenakitpvp.commands.setup.reload.ReloadKits;
+import arenakitpvp.commands.setup.reload.ReloadMSG;
 import arenakitpvp.commands.setup.selection.Clear;
 import arenakitpvp.commands.setup.selection.SetP1;
 import arenakitpvp.commands.setup.selection.SetP2;
@@ -54,6 +56,8 @@ public class SetupCommandsHandler implements CommandExecutor {
 		commandHandlers.put("setsafezone", new SetSafeZone(plugin, plselection));
 		commandHandlers.put("addkit", new AddKit(plugin));
 		commandHandlers.put("deleteKit", new DeleteKit(plugin));
+		commandHandlers.put("reloadmsg", new ReloadMSG(plugin));
+		commandHandlers.put("reloadkits", new ReloadKits(plugin));
 	}
 
 	@Override
