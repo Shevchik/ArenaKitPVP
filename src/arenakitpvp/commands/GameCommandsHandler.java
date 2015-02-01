@@ -83,6 +83,7 @@ public class GameCommandsHandler implements CommandExecutor {
 						Messages.sendMessage(player, Messages.kitgiven.replace("{KITNAME}", args[1]));
 						return true;
 					} else {
+						Messages.sendMessage(player, Messages.kitshouldbeinsafezone);
 						return true;
 					}
 				} else {
